@@ -4,7 +4,7 @@ import { getDaysRemaining } from '../utils/dateUtils';
 const USERS_KEY = 'expirywise_users_v1';
 const CURRENT_USER_KEY = 'expirywise_current_user_v1';
 const PRODUCTS_KEY = 'expirywise_products_v1';
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.location.hostname === 'localhost' ? 'http://localhost:3001/api' : '/api');
 
 // User methods
 export function getRegisteredUsers(): User[] {
