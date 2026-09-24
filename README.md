@@ -2,76 +2,54 @@
 
 > **"Know before it expires. Waste less."**
 
-ExpiryWise is a smart web application designed to eliminate household waste by tracking expiration dates for groceries, pantry essentials, medicine, cosmetics, and household items with automated reminders, AI bill scanning, and zero-waste recipe recommendations.
+ExpiryWise is a smart food, grocery, medicine, cosmetics, and household expiry tracker that helps users eliminate waste and stay organized. Users can add products manually or scan shopping receipts with optical AI (OCR) to track inventory, receive automated expiry reminders, and discover zero-waste recipes for items expiring soon.
 
 ---
 
-## ✨ Features
+## ✨ Features & Capabilities
 
-### 1. 🔐 User Authentication & Complete Data Isolation
-- **Sign Up & Login**: Create personal accounts with full data privacy.
-- **Forgot Password**: Password reset and recovery workflow.
-- **1-Click Demo Login**: Explore pre-seeded pantry items instantly with Emma Green's demo profile.
-- **Private Data Scoping**: Every product, receipt scan, and preference is strictly scoped per user in isolated storage.
-
-### 2. 📊 Interactive Dashboard & Urgency Status Cards
-- **Status Cards**:
+### 1. 📊 Page 1 — Overview Hub
+- **Urgent Expiry Banner**: High-priority alert banner for items expiring today with instant zero-waste recipe links.
+- **Interactive Status Cards**:
   - 🟢 **Fresh**: Good condition with healthy shelf life remaining.
   - 🟠 **Expiring Soon**: 1–3 days left before expiration.
-  - ⚡ **Expiring Today**: High-priority alert banner for immediate action.
+  - ⚡ **Expiring Today**: High-priority alert for immediate action.
   - 🔴 **Expired**: Prompting discard or safety check.
-  - 📦 **Total Products**: All tracked items.
-- **Sustainability & Money-Saved Tracker**: Real-time counter of total dollars saved and kg of CO₂ emissions prevented from landfills.
-- **1-Click Filtering**: Click any status card to filter products instantly.
+  - 📦 **Total Products**: All tracked items in your inventory.
+- **Sustainability & Savings Tracker**: Real-time counter of total dollars saved ($\$$) and kilograms of $\text{CO}_2$ emissions prevented from landfills.
+- **Storage Zone Breakdown**: Item counts for Fridge, Freezer, Pantry, Medicine Cabinet, Bathroom, Vanity, etc.
 
-### 3. ➕ Smart Add & Edit Product
-- **Fields**: Product Name, Brand, Category, Quantity, Purchase Date, Expiry Date, Storage Location, Reminder Preference, Photo, Notes, Price.
-- **Categories Supported**:
-  - 🥦 Food
-  - 🧃 Beverages
-  - 💊 Medicine
-  - 💄 Cosmetics
-  - 🧼 Household
-  - 📦 Other
-- **Storage Locations**:
-  - 🥛 Fridge
-  - 🧊 Freezer
-  - 🍞 Pantry
-  - 💊 Medicine Cabinet
-  - 🧴 Bathroom
-  - 💄 Vanity
-  - 🧂 Kitchen Shelf
-  - 📦 Other
-- **Smart Shelf-Life AI Auto-Fill**: Auto-detects category, storage location, and suggests default shelf life as you type common product names.
-- **Quick Date Shortcuts**: Instant `+3 Days`, `+1 Wk`, `+2 Wks`, `+1 Mo`, `+6 Mo`, `+1 Yr` buttons.
-- **Photo Upload & Live Camera**: Snap photo directly via webcam or upload image.
+### 2. 🥗 Page 2 — My Products & Kitchen Inventory
+- **Full Inventory Management**:
+  - **Live Search**: Instant filter by product name, brand, location, or notes.
+  - **Category Filters**: Food (🥦), Beverages (🧃), Medicine (💊), Cosmetics (💄), Household (🧼), Other (📦).
+  - **Storage Location Filters**: Fridge (🥛), Freezer (🧊), Pantry (🍞), Medicine Cabinet (💊), etc.
+  - **Status Filters**: All, Fresh, Expiring Soon, Expiring Today, Expired, Used/Consumed.
+  - **Sorting**: Expiry date (soonest/latest), Name A–Z, Recently Added.
+  - **View Toggle**: Responsive Grid Cards or compact List View.
+- **Product Actions**:
+  - ✅ **Mark as Used / Consumed**: Triggers celebratory confetti burst and updates savings metrics.
+  - ✏️ **Edit & Update**: Modify dates, quantities, and photos.
+  - 🗑️ **Delete Item**.
+  - 🛒 **Shopping & Replenishment List**: 1-click re-buy or copy grocery shopping list to clipboard.
+  - 📥 **Export to CSV Spreadsheet** & 🖨️ **Print Inventory**.
 
-### 4. 🧾 AI Optical Bill Scanner (OCR)
-- **Upload, Live Snap, or Sample Receipts**:
-  - Upload receipt photo / invoice.
-  - Take live webcam snapshot with alignment frame.
+### 3. 🧾 Page 3 — Optical Bill Scanner (AI OCR)
+- **Multi-Input Modes**:
+  - Upload receipt photo / invoice (JPG, PNG, WEBP).
+  - Take live webcam snapshot with alignment viewfinder.
   - Try pre-loaded sample grocery, pharmacy, and pantry bills.
-- **Intelligent Information Extraction**:
-  - Store name
-  - Purchase date
-  - Line items & quantities
-  - Category matching & recommended storage
-- **⚠️ Expiry Date Integrity Guarantee**:
+- **Information Extraction**:
+  - Store name, purchase date, line items, quantities, and prices.
+- **⚠️ Expiry Date Integrity**:
   - *Shopping bills do not contain expiry dates*. ExpiryWise never invents false dates.
-  - Presents an editable review table with shelf-life suggestions, allowing users to verify or adjust dates before saving in batch.
+  - Automatically matches items with built-in shelf-life heuristics and presents an editable review table for confirming dates before saving in batch.
 
-### 5. 🍳 Zero-Waste Cooking & Recipe Suggestions
-- Instant zero-waste culinary ideas and preservation tips (e.g., banana pancakes, fridge frittata, homemade croutons, smoothie bowls) for items expiring today or soon.
-
-### 6. 🔔 Alert Reminders & Audio Chimes
-- In-app notification center with badge indicator.
-- Browser desktop push notification integration.
-- Soothing Web Audio synthesized chimes on task completion and alerts.
-- Confetti celebration when items are marked as used/consumed.
-
-### 7. 🛒 Replenishment & Shopping List
-- Automatically keeps track of consumed/wasted items for 1-click re-adding or copying to clipboard as a grocery shopping list.
-- CSV spreadsheet export and printable inventory view.
+### 4. 🔐 User Authentication & Database Privacy
+- **Sign Up, Login & Logout**: Secure, isolated user sessions.
+- **Forgot Password Workflow**: Password recovery and instant reset.
+- **1-Click Demo Login**: Pre-seeded demo account (*Emma Green*).
+- **SQLite Database**: Persistent relational database storage in `expirywise.db` with offline-first client synchronization.
 
 ---
 
@@ -81,11 +59,15 @@ ExpiryWise is a smart web application designed to eliminate household waste by t
 # 1. Install dependencies
 npm install
 
-# 2. Start the development server
+# 2. Run both Frontend & SQLite Backend concurrently
+npm run dev:full
+
+# Or run Frontend only
 npm run dev
 
-# 3. Build for production
-npm run build
+# Or run Backend only
+npm run server
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser to start tracking and wasting less!
+- **Frontend Web App:** [http://localhost:5173](http://localhost:5173)
+- **Backend API:** `http://localhost:3001`
