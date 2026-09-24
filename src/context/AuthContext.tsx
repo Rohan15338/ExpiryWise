@@ -26,9 +26,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (active) {
       setUser(active);
     } else {
-      // Default to demo user for first-time visitors so they immediately experience the full app
-      setUser(DEMO_USER);
-      setCurrentUser(DEMO_USER);
+      setUser(null);
     }
     setIsLoading(false);
   }, []);

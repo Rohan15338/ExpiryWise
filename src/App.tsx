@@ -20,6 +20,7 @@ import { Navbar, ActiveTab } from './components/Navbar';
 import { OverviewView } from './views/OverviewView';
 import { MyKitchenView } from './views/MyKitchenView';
 import { BillScannerView } from './views/BillScannerView';
+import { WelcomeGuestView } from './views/WelcomeGuestView';
 
 // Modals & Drawers
 import { AddProductModal } from './components/AddProductModal';
@@ -57,6 +58,7 @@ export function App() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'signup' | 'forgot'>('login');
   const [isRecipeOpen, setIsRecipeOpen] = useState(false);
   const [isReplenishOpen, setIsReplenishOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
@@ -213,59 +215,76 @@ export function App() {
         onOpenAuth={() => setIsAuthOpen(true)}
       />
 
-      {/* Main Content Area: Renders the active page */}
+      {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        
-        {/* PAGE 1: Overview */}
-        {activeTab === 'overview' && (
-          <OverviewView
-            products={products}
-            onNavigateToKitchen={handleNavigateToKitchen}
-            onNavigateToScanner={() => {
-              setActiveTab('scan');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+        {!user ? (
+          <WelcomeGuestView
+            onOpenSignUp={() => {
+              setAuthMode('signup');
+              setIsAuthOpen(true);
             }}
-            onOpenAddProduct={() => {
-              setEditingProduct(null);
-              setIsAddOpen(true);
+            onOpenLogin={() => {
+              setAuthMode('login');
+              setIsAuthOpen(true);
             }}
-            onOpenRecipes={() => handleOpenRecipeForSpecificItem()}
-            moneySaved={metrics.moneySaved}
-            co2PreventedKg={metrics.co2PreventedKg}
-          />
-        )}
-
-        {/* PAGE 2: My Products / My Kitchen */}
-        {activeTab === 'kitchen' && (
-          <MyKitchenView
-            products={products}
-            initialStatusFilter={kitchenStatusPreset}
-            initialLocationFilter={kitchenLocationPreset}
-            onOpenAddProduct={() => {
-              setEditingProduct(null);
-              setIsAddOpen(true);
+            onExploreDemo={() => {
+              setAuthMode('login');
+              setIsAuthOpen(true);
             }}
-            onNavigateToScanner={() => setActiveTab('scan')}
-            onOpenReplenish={() => setIsReplenishOpen(true)}
-            onOpenRecipes={handleOpenRecipeForSpecificItem}
-            onEditProduct={handleEditProduct}
-            onDeleteProduct={handleDeleteProduct}
-            onMarkConsumed={handleMarkConsumed}
-            onMarkWasted={handleMarkWasted}
-            onExportCSV={handleExportCSV}
-            onPrintInventory={handlePrint}
           />
-        )}
+        ) : (
+          <>
+            {/* PAGE 1: Overview */}
+            {activeTab === 'overview' && (
+              <OverviewView
+                products={products}
+                onNavigateToKitchen={handleNavigateToKitchen}
+                onNavigateToScanner={() => {
+                  setActiveTab('scan');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenAddProduct={() => {
+                  setEditingProduct(null);
+                  setIsAddOpen(true);
+                }}
+                onOpenRecipes={() => handleOpenRecipeForSpecificItem()}
+                moneySaved={metrics.moneySaved}
+                co2PreventedKg={metrics.co2PreventedKg}
+              />
+            )}
 
-        {/* PAGE 3: Bill Scanning */}
-        {activeTab === 'scan' && (
-          <BillScannerView
-            onAddMultiple={handleAddMultiple}
-            onNavigateToKitchen={() => setActiveTab('kitchen')}
-            userId={user?.id || 'usr_demo_eco_chef'}
-          />
-        )}
+            {/* PAGE 2: My Products / My Kitchen */}
+            {activeTab === 'kitchen' && (
+              <MyKitchenView
+                products={products}
+                initialStatusFilter={kitchenStatusPreset}
+                initialLocationFilter={kitchenLocationPreset}
+                onOpenAddProduct={() => {
+                  setEditingProduct(null);
+                  setIsAddOpen(true);
+                }}
+                onNavigateToScanner={() => setActiveTab('scan')}
+                onOpenReplenish={() => setIsReplenishOpen(true)}
+                onOpenRecipes={handleOpenRecipeForSpecificItem}
+                onEditProduct={handleEditProduct}
+                onDeleteProduct={handleDeleteProduct}
+                onMarkConsumed={handleMarkConsumed}
+                onMarkWasted={handleMarkWasted}
+                onExportCSV={handleExportCSV}
+                onPrintInventory={handlePrint}
+              />
+            )}
 
+            {/* PAGE 3: Bill Scanning */}
+            {activeTab === 'scan' && (
+              <BillScannerView
+                onAddMultiple={handleAddMultiple}
+                onNavigateToKitchen={() => setActiveTab('kitchen')}
+                userId={user.id}
+              />
+            )}
+          </>
+        )}
       </main>
 
       {/* Mobile Bottom Navigation Bar for Instant 1-Tap Switching */}
@@ -396,6 +415,7 @@ export function App() {
       <AuthModal
         isOpen={isAuthOpen}
         onClose={() => setIsAuthOpen(false)}
+        initialMode={authMode}
       />
 
     </div>

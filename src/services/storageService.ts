@@ -222,9 +222,7 @@ export function getAllProducts(): Product[] {
   try {
     const raw = localStorage.getItem(PRODUCTS_KEY);
     if (!raw) {
-      const demoProducts = getInitialDemoProducts(DEMO_USER.id);
-      localStorage.setItem(PRODUCTS_KEY, JSON.stringify(demoProducts));
-      return demoProducts;
+      return [];
     }
     return JSON.parse(raw);
   } catch {
