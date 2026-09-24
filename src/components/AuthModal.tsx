@@ -14,7 +14,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   onClose,
   initialMode = 'login'
 }) => {
-  const { login, signup, loginAsDemo, requestPasswordReset, resetPassword } = useAuth();
+  const { login, signup, requestPasswordReset, resetPassword } = useAuth();
   
   const [mode, setMode] = useState<'login' | 'signup' | 'forgot' | 'reset-new'>(initialMode);
   const [name, setName] = useState('');
@@ -59,13 +59,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     }
   };
 
-  const handleDemoLogin = async () => {
-    setIsLoading(true);
-    await loginAsDemo();
-    setIsLoading(false);
-    sound.playSuccess();
-    onClose();
-  };
 
   const handleForgotSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,28 +137,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-xs flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>{successMsg}</span>
-            </div>
-          )}
-
-          {/* 1-Click Demo Login Box */}
-          {mode === 'login' && (
-            <div className="p-3.5 bg-emerald-50/70 border border-emerald-200/80 rounded-2xl flex items-center justify-between gap-3">
-              <div>
-                <p className="text-xs font-bold text-emerald-950 flex items-center gap-1">
-                  <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-                  Quick Explore
-                </p>
-                <p className="text-[11px] text-emerald-800">
-                  Try Emma Green's sample kitchen inventory
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={handleDemoLogin}
-                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-xs transition cursor-pointer active:scale-95"
-              >
-                1-Click Demo
-              </button>
             </div>
           )}
 

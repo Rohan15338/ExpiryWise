@@ -1,0 +1,19 @@
+{
+  "name": "ExpiryWise — Smart Expiry Tracker",
+  "short_name": "ExpiryWise",
+  "description": "Know before it expires. Waste less. Track food, grocery, medicine, and cosmetics expiries.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#059669",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%23059669%22/><text y=%22.75em%22 x=%2250%25%22 text-anchor=%22middle%22 font-size=%2260%22>🌱</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "lifestyle", "productivity"]
+}

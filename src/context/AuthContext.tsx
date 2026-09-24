@@ -1,13 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User } from '../types';
-import { getCurrentUser, setCurrentUser, getRegisteredUsers, saveRegisteredUsers, DEMO_USER } from '../services/storageService';
+import { getCurrentUser, setCurrentUser, getRegisteredUsers, saveRegisteredUsers } from '../services/storageService';
 
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   login: (email: string, password?: string) => Promise<{ success: boolean; error?: string }>;
-  loginAsDemo: () => Promise<void>;
   signup: (name: string, email: string, password?: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => void;
   requestPasswordReset: (email: string) => Promise<{ success: boolean; message: string }>;
@@ -33,7 +32,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password?: string): Promise<{ success: boolean; error?: string }> => {
     setIsLoading(true);
-    // Simulate brief network delay
     await new Promise(r => setTimeout(r, 400));
 
     const users = getRegisteredUsers();
@@ -54,14 +52,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setCurrentUser(existing);
     setIsLoading(false);
     return { success: true };
-  };
-
-  const loginAsDemo = async () => {
-    setIsLoading(true);
-    await new Promise(r => setTimeout(r, 300));
-    setUser(DEMO_USER);
-    setCurrentUser(DEMO_USER);
-    setIsLoading(false);
   };
 
   const signup = async (name: string, email: string, password?: string): Promise<{ success: boolean; error?: string }> => {
@@ -158,7 +148,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isAuthenticated: !!user,
         isLoading,
         login,
-        loginAsDemo,
         signup,
         logout,
         requestPasswordReset,

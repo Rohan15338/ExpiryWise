@@ -227,10 +227,6 @@ export function App() {
               setAuthMode('login');
               setIsAuthOpen(true);
             }}
-            onExploreDemo={() => {
-              setAuthMode('login');
-              setIsAuthOpen(true);
-            }}
           />
         ) : (
           <>

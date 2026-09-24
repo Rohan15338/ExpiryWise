@@ -14,13 +14,11 @@ import {
 interface WelcomeGuestViewProps {
   onOpenSignUp: () => void;
   onOpenLogin: () => void;
-  onExploreDemo: () => void;
 }
 
 export const WelcomeGuestView: React.FC<WelcomeGuestViewProps> = ({
   onOpenSignUp,
-  onOpenLogin,
-  onExploreDemo
+  onOpenLogin
 }) => {
   return (
     <div className="max-w-5xl mx-auto py-8 sm:py-12 space-y-12 animate-in fade-in duration-300">
@@ -55,16 +53,6 @@ export const WelcomeGuestView: React.FC<WelcomeGuestViewProps> = ({
             className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm border border-slate-200 shadow-xs transition flex items-center justify-center gap-2 cursor-pointer"
           >
             <span>Sign In to Your Account</span>
-          </button>
-        </div>
-
-        {/* 1-Click Demo Option */}
-        <div className="pt-2">
-          <button
-            onClick={onExploreDemo}
-            className="text-xs font-semibold text-slate-500 hover:text-emerald-700 underline cursor-pointer"
-          >
-            Or explore with a sample demo profile →
           </button>
         </div>
       </div>
