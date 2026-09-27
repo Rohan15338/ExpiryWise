@@ -239,7 +239,7 @@ export const BillScannerModal: React.FC<BillScannerModalProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-lg font-bold text-slate-900 font-['Outfit']">
-                  AI Bill & Receipt Scanner
+                  Scan
                 </h2>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800">
                   OCR Engine

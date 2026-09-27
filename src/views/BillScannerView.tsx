@@ -209,7 +209,7 @@ export const BillScannerView: React.FC<BillScannerViewProps> = ({
           <div className="flex items-center gap-2">
             <h1 className="text-2xl font-bold text-slate-900 font-['Outfit'] flex items-center gap-2">
               <Receipt className="w-6 h-6 text-teal-600" />
-              <span>AI Bill & Receipt Scanner</span>
+              <span>Scan</span>
             </h1>
           </div>
           <p className="text-xs text-slate-500">

@@ -321,7 +321,7 @@ export function App() {
           }`}
         >
           <ScanLine className="w-5 h-5" />
-          <span className="text-[10px]">Scan Bill</span>
+          <span className="text-[10px]">Scan</span>
         </button>
 
         <button

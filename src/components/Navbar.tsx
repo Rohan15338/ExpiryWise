@@ -124,7 +124,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <ScanLine className="w-4 h-4 text-teal-600" />
-              <span>Bill Scanning</span>
+              <span>Scan</span>
               <span className="px-1.5 py-0.2 rounded text-[10px] font-extrabold bg-teal-100 text-teal-800">
                 AI OCR
               </span>
@@ -287,7 +287,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <ScanLine className="w-4 h-4 text-teal-600" />
-              <span>Bill Scanning</span>
+              <span>Scan</span>
             </button>
           </div>
         )}

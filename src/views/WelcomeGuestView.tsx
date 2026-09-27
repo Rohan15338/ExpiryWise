@@ -85,7 +85,7 @@ export const WelcomeGuestView: React.FC<WelcomeGuestViewProps> = ({
             <Receipt className="w-6 h-6 text-teal-600" />
           </div>
           <h3 className="text-base font-bold text-slate-900 font-['Outfit']">
-            AI Optical Bill Scanner
+            Scan
           </h3>
           <p className="text-xs text-slate-600 leading-relaxed">
             Snap a photo or upload your grocery receipt to automatically extract product names, quantities, and smart shelf-life recommendations.

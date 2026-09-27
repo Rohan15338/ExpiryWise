@@ -253,7 +253,7 @@ export const MyKitchenView: React.FC<MyKitchenViewProps> = ({
               className="px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-xl text-xs flex items-center gap-1.5 cursor-pointer border border-teal-200"
             >
               <Receipt className="w-4 h-4" />
-              <span>Scan Shopping Bill</span>
+              <span>Scan</span>
             </button>
             <button
               onClick={() => {

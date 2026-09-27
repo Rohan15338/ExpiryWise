@@ -110,7 +110,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               className="flex-1 sm:flex-none px-5 py-3 rounded-2xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer active:scale-98"
             >
               <Receipt className="w-4 h-4" />
-              <span>Scan Bill (AI OCR)</span>
+              <span>Scan</span>
             </button>
 
             <button
