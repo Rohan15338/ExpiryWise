@@ -103,8 +103,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         {/* Header */}
         <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/60">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 text-white flex items-center justify-center shadow-xs">
-              <span className="text-lg">🌱</span>
+            <div className="w-9 h-9 rounded-xl overflow-hidden bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shadow-xs">
+              <img src="/logo.png" alt="ExpiryWise" className="w-full h-full object-cover" />
             </div>
             <div>
               <h2 className="text-base font-bold text-slate-900 font-['Outfit']">

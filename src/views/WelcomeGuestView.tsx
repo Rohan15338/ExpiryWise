@@ -24,7 +24,15 @@ export const WelcomeGuestView: React.FC<WelcomeGuestViewProps> = ({
     <div className="max-w-5xl mx-auto py-8 sm:py-12 space-y-12 animate-in fade-in duration-300">
       
       {/* Hero Header */}
-      <div className="text-center space-y-4 max-w-3xl mx-auto">
+      <div className="text-center space-y-5 max-w-3xl mx-auto flex flex-col items-center">
+        <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl overflow-hidden shadow-xl shadow-emerald-600/15 ring-4 ring-emerald-500/20 bg-white p-2">
+          <img 
+            src="/logo.png" 
+            alt="ExpiryWise Logo" 
+            className="w-full h-full object-contain rounded-2xl"
+          />
+        </div>
+
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-200 shadow-2xs">
           <span>🌱 Smart Expiry Tracking & Waste Prevention</span>
         </div>

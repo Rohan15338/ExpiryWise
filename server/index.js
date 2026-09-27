@@ -79,6 +79,20 @@ app.post('/api/auth/reset-password', (req, res) => {
   res.json({ success: true, message: 'Password updated successfully' });
 });
 
+// Helper to ensure a user exists before inserting foreign-key constrained records
+function ensureUserExists(userId) {
+  if (!userId) return;
+  const existing = db.prepare('SELECT id FROM users WHERE id = ?').get(userId);
+  if (!existing) {
+    const now = new Date().toISOString();
+    const avatar = `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(userId)}`;
+    db.prepare(`
+      INSERT OR IGNORE INTO users (id, name, email, password, avatar, reminder_days_default, sound_enabled, currency, created_at)
+      VALUES (?, ?, ?, ?, ?, 2, 1, '$', ?)
+    `).run(userId, 'User', `${userId}@local.app`, 'localpass', avatar, now);
+  }
+}
+
 // --- PRODUCT ROUTES ---
 app.get('/api/products', (req, res) => {
   const userId = req.query.userId;
@@ -118,6 +132,8 @@ app.post('/api/products', (req, res) => {
     return res.status(400).json({ error: 'Missing required product fields' });
   }
 
+  ensureUserExists(p.userId);
+
   const id = `prod_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   const now = new Date().toISOString();
 
@@ -140,6 +156,10 @@ app.post('/api/products/batch', (req, res) => {
   const { items } = req.body;
   if (!Array.isArray(items) || items.length === 0) {
     return res.status(400).json({ error: 'Items array is required' });
+  }
+
+  if (items[0]?.userId) {
+    ensureUserExists(items[0].userId);
   }
 
   const insertStmt = db.prepare(`

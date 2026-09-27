@@ -54,8 +54,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => onTabChange('overview')}
             className="flex items-center gap-3 shrink-0 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 ring-2 ring-emerald-500/20 group-hover:scale-105 transition-transform">
-              <span className="text-xl">🌱</span>
+            <div className="w-10 h-10 rounded-2xl overflow-hidden bg-emerald-50 border border-emerald-200/80 shadow-md shadow-emerald-500/10 ring-2 ring-emerald-500/20 group-hover:scale-105 transition-transform flex items-center justify-center">
+              <img 
+                src="/logo.png" 
+                alt="ExpiryWise" 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Fallback to emoji if image fails
+                  (e.target as HTMLElement).style.display = 'none';
+                }}
+              />
             </div>
             <div>
               <div className="flex items-center gap-1.5">

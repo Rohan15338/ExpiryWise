@@ -343,7 +343,8 @@ export function App() {
       <footer className="mt-auto py-6 border-t border-slate-200/80 bg-white/70 backdrop-blur-xs text-center text-xs text-slate-500 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-slate-800 font-['Outfit']">🌱 ExpiryWise</span>
+            <img src="/logo.png" alt="ExpiryWise" className="w-5 h-5 rounded-md object-cover" />
+            <span className="font-bold text-slate-800 font-['Outfit']">ExpiryWise</span>
             <span>—</span>
             <span>Know before it expires. Waste less.</span>
           </div>
